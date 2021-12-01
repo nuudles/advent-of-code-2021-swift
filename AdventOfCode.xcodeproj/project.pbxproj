@@ -79,6 +79,12 @@
 		392786332755B91800922454 /* Day23Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3927861B2755B91800922454 /* Day23Tests.swift */; };
 		392786342755B91800922454 /* Day8Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3927861C2755B91800922454 /* Day8Tests.swift */; };
 		392786352755B91800922454 /* Day2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3927861D2755B91800922454 /* Day2Tests.swift */; };
+		3927863727567E3700922454 /* inputs in Resources */ = {isa = PBXBuildFile; fileRef = 3927863627567E3700922454 /* inputs */; };
+		3927863F2756AA9700922454 /* String+Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3927863E2756AA9700922454 /* String+Regex.swift */; };
+		392786402756AA9700922454 /* String+Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3927863E2756AA9700922454 /* String+Regex.swift */; };
+		39278643275797A800922454 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 39278642275797A800922454 /* Algorithms */; };
+		392786452757B4E800922454 /* Sequence+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392786442757B4E800922454 /* Sequence+Helpers.swift */; };
+		392786462757B4E800922454 /* Sequence+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392786442757B4E800922454 /* Sequence+Helpers.swift */; };
 		39C3D07127556C2F00B2F989 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C3D07027556C2F00B2F989 /* main.swift */; };
 		39C3D07B27556CA700B2F989 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C3D07A27556CA700B2F989 /* Day.swift */; };
 		39C3D07D27556D7800B2F989 /* Day1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C3D07C27556D7800B2F989 /* Day1.swift */; };
@@ -149,6 +155,9 @@
 		3927861B2755B91800922454 /* Day23Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day23Tests.swift; sourceTree = "<group>"; };
 		3927861C2755B91800922454 /* Day8Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day8Tests.swift; sourceTree = "<group>"; };
 		3927861D2755B91800922454 /* Day2Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day2Tests.swift; sourceTree = "<group>"; };
+		3927863627567E3700922454 /* inputs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = inputs; sourceTree = "<group>"; };
+		3927863E2756AA9700922454 /* String+Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Regex.swift"; sourceTree = "<group>"; };
+		392786442757B4E800922454 /* Sequence+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Helpers.swift"; sourceTree = "<group>"; };
 		39C3D06D27556C2F00B2F989 /* AdventOfCode */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AdventOfCode; sourceTree = BUILT_PRODUCTS_DIR; };
 		39C3D07027556C2F00B2F989 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		39C3D07A27556CA700B2F989 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
@@ -170,18 +179,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39278643275797A800922454 /* Algorithms in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3927863D2756AA8E00922454 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				392786442757B4E800922454 /* Sequence+Helpers.swift */,
+				3927863E2756AA9700922454 /* String+Regex.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		39278641275797A800922454 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		39C3D06427556C2F00B2F989 = {
 			isa = PBXGroup;
 			children = (
+				3927863627567E3700922454 /* inputs */,
 				39C3D06F27556C2F00B2F989 /* AdventOfCode */,
 				39C3D0AD275572BC00B2F989 /* AdventOfCodeTests */,
 				39C3D06E27556C2F00B2F989 /* Products */,
+				39278641275797A800922454 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -198,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				39C3D07927556C5B00B2F989 /* Days */,
+				3927863D2756AA8E00922454 /* Extensions */,
 				39C3D07027556C2F00B2F989 /* main.swift */,
 			);
 			path = AdventOfCode;
@@ -304,6 +333,9 @@
 			dependencies = (
 			);
 			name = AdventOfCodeTests;
+			packageProductDependencies = (
+				39278642275797A800922454 /* Algorithms */,
+			);
 			productName = AdventOfCodeTests;
 			productReference = 39C3D0AC275572BC00B2F989 /* AdventOfCodeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -353,6 +385,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3927863727567E3700922454 /* inputs in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,6 +406,7 @@
 				392785EB2755B84800922454 /* Day4.swift in Sources */,
 				392785D72755B84800922454 /* Day17.swift in Sources */,
 				392785E42755B84800922454 /* Day2.swift in Sources */,
+				392786452757B4E800922454 /* Sequence+Helpers.swift in Sources */,
 				39C3D07D27556D7800B2F989 /* Day1.swift in Sources */,
 				392785E22755B84800922454 /* Day21.swift in Sources */,
 				392785E72755B84800922454 /* Day9.swift in Sources */,
@@ -387,6 +421,7 @@
 				392785D92755B84800922454 /* Day20.swift in Sources */,
 				392785D82755B84800922454 /* Day19.swift in Sources */,
 				392785E52755B84800922454 /* Day8.swift in Sources */,
+				3927863F2756AA9700922454 /* String+Regex.swift in Sources */,
 				392785DE2755B84800922454 /* Day3.swift in Sources */,
 				392785D62755B84800922454 /* Day16.swift in Sources */,
 				392785EC2755B84800922454 /* Day14.swift in Sources */,
@@ -397,6 +432,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				392786462757B4E800922454 /* Sequence+Helpers.swift in Sources */,
 				392785F42755B85000922454 /* Day15.swift in Sources */,
 				392785FF2755B85000922454 /* Day24.swift in Sources */,
 				392786222755B91800922454 /* Day15Tests.swift in Sources */,
@@ -421,6 +457,7 @@
 				3927862A2755B91800922454 /* Day24Tests.swift in Sources */,
 				392786202755B91800922454 /* Day13Tests.swift in Sources */,
 				392785F02755B85000922454 /* Day18.swift in Sources */,
+				392786402756AA9700922454 /* String+Regex.swift in Sources */,
 				3927862B2755B91800922454 /* Day9Tests.swift in Sources */,
 				392785FA2755B85000922454 /* Day4.swift in Sources */,
 				392786352755B91800922454 /* Day2Tests.swift in Sources */,
@@ -671,6 +708,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		39278642275797A800922454 /* Algorithms */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 39C3D0B72755752000B2F989 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
+			productName = Algorithms;
+		};
 		39C3D0B82755752000B2F989 /* Algorithms */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 39C3D0B72755752000B2F989 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
