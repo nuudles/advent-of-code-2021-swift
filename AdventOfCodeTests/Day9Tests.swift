@@ -9,11 +9,29 @@ class Day9Tests: XCTestCase {
     let day = Day9()
 
     func testPart1() throws {
-        debugPrint(day.part1(""))
+        XCTAssertEqual(
+            day.part1("""
+            2199943210
+            3987894921
+            9856789892
+            8767896789
+            9899965678
+            """) as? Int,
+            15
+        )
     }
 
     func testPart2() throws {
-        debugPrint(day.part2(""))
+        XCTAssertEqual(
+            day.part2("""
+            2199943210
+            3987894921
+            9856789892
+            8767896789
+            9899965678
+            """) as? Int,
+            1134
+        )
     }
 
 }
