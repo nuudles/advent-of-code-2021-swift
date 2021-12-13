@@ -6,11 +6,6 @@
 import Foundation
 
 final class Day11: Day {
-    struct Position: Hashable, Equatable {
-        let x: Int
-        let y: Int
-    }
-
     func step(_ octopi: [[Int]]) -> (Int, [[Int]]) {
         var flashPositions = Set<Position>()
         var newOctopi = octopi.enumerated().map { line in
