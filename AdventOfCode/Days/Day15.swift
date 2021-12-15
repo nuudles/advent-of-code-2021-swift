@@ -77,7 +77,6 @@ final class Day15: Day {
         open var identifier: String
         open var neighbors: [(Vertex, Int)] = []
         open var pathLengthFromStart = Int.max
-        open var pathVerticesFromStart: [Vertex] = []
 
         public init(identifier: String) {
             self.identifier = identifier
@@ -85,7 +84,6 @@ final class Day15: Day {
 
         open func clearCache() {
             pathLengthFromStart = Int.max
-            pathVerticesFromStart = []
         }
 
         func hash(into hasher: inout Hasher) {
@@ -93,7 +91,7 @@ final class Day15: Day {
         }
 
         static func ==(lhs: Day15.Vertex, rhs: Day15.Vertex) -> Bool {
-            return lhs.identifier == rhs.identifier
+            return lhs.hashValue == rhs.hashValue
         }
     }
 
@@ -112,10 +110,11 @@ final class Day15: Day {
             clearCache()
             var currentVertices = self.totalVertices
             startVertex.pathLengthFromStart = 0
-            startVertex.pathVerticesFromStart.append(startVertex)
             var currentVertex: Vertex? = startVertex
+            var potentialVertices = Set<Vertex>()
             while let vertex = currentVertex {
                 currentVertices.remove(vertex)
+                potentialVertices.remove(vertex)
                 let filteredNeighbors = vertex.neighbors.filter { currentVertices.contains($0.0) }
                 for neighbor in filteredNeighbors {
                     let neighborVertex = neighbor.0
@@ -124,15 +123,14 @@ final class Day15: Day {
                     let theoreticNewWeight = vertex.pathLengthFromStart + weight
                     if theoreticNewWeight < neighborVertex.pathLengthFromStart {
                         neighborVertex.pathLengthFromStart = theoreticNewWeight
-                        neighborVertex.pathVerticesFromStart = vertex.pathVerticesFromStart
-                        neighborVertex.pathVerticesFromStart.append(neighborVertex)
+                        potentialVertices.insert(neighborVertex)
                     }
                 }
                 if currentVertices.isEmpty {
                     currentVertex = nil
                     break
                 }
-                currentVertex = currentVertices.min { $0.pathLengthFromStart < $1.pathLengthFromStart }
+                currentVertex = potentialVertices.min { $0.pathLengthFromStart < $1.pathLengthFromStart }
             }
         }
     }
