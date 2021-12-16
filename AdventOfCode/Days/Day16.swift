@@ -11,14 +11,14 @@ final class Day16: Day {
         case operation(version: Int, typeId: Int, subpackets: [Packet])
 
         init(binary: Substring, index: inout Int) {
-            let version = Int(binary[index..<index + 2], radix: 2) ?? 0
+            let version = Int(binary[index..<index + 3], radix: 2) ?? 0
             index += 3
-            let packetTypeId = Int(binary[index..<index + 2], radix: 2) ?? 0
+            let packetTypeId = Int(binary[index..<index + 3], radix: 2) ?? 0
             index += 3
             if packetTypeId == 4 {
                 var valueBinary = ""
                 while true {
-                    valueBinary.append(contentsOf: binary[index + 1..<index + 4])
+                    valueBinary.append(contentsOf: binary[index + 1..<index + 5])
                     index += 5
                     if binary[index - 5] == "0" {
                         break
@@ -33,14 +33,14 @@ final class Day16: Day {
                 index += 1
 
                 if lengthTypeId == "0" {
-                    let length = Int(binary[index..<index + 14], radix: 2) ?? 0
+                    let length = Int(binary[index..<index + 15], radix: 2) ?? 0
                     index += 15
                     let maxIndex = length + index
                     while index < maxIndex {
                         subpackets.append(Packet(binary: binary, index: &index))
                     }
                 } else {
-                    let count = Int(binary[index..<index + 10], radix: 2) ?? 0
+                    let count = Int(binary[index..<index + 11], radix: 2) ?? 0
                     index += 11
                     for _ in 0..<count {
                         subpackets.append(Packet(binary: binary, index: &index))
