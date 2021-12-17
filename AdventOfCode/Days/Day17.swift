@@ -46,17 +46,12 @@ final class Day17: Day {
         return product(1...xRange.upperBound, -300...300).count { (x, y) in
             var velocity = (x, y)
             var position = (0, 0)
-            var localMaxY = Int.min
 
             while true {
                 position.0 += velocity.0
                 position.1 += velocity.1
                 velocity.0 = max(velocity.0 - 1, 0)
                 velocity.1 -= 1
-
-                if position.1 > localMaxY {
-                    localMaxY = position.1
-                }
 
                 if xRange.contains(position.0) && yRange.contains(position.1) {
                     return true
