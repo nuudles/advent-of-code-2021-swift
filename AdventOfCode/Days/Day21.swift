@@ -41,7 +41,6 @@ final class Day21: Day {
     struct Universe: Hashable, Equatable {
         let positions: [Int]
         let scores: [Int]
-        let turn: Int
     }
 
     func part2(_ input: String) -> CustomStringConvertible {
@@ -53,28 +52,30 @@ final class Day21: Day {
 
         var wins = [0, 0]
         var universes = [
-            Universe(positions: positions, scores: [0, 0], turn: 0): 1
+            Universe(positions: positions, scores: [0, 0]): 1
         ]
         let rolls = product(product(1...3, 1...3), 1...3)
             .map { $0.0 + $0.1 + $1 }
             .reduce(into: Dictionary<Int, Int>()) { result, roll in
                 result[roll, default: 0] += 1
             }
+        var turn = 0
         while !universes.isEmpty {
             universes = universes.reduce(into: [:]) { result, pair in
                 let (universe, count) = pair
                 rolls.forEach { (roll, rollCount) in
                     var (positions, scores) = (universe.positions, universe.scores)
-                    positions[universe.turn] = (positions[universe.turn] + roll) % 10
-                    scores[universe.turn] += positions[universe.turn] + 1
-                    guard scores[universe.turn] < 21 else {
-                        wins[universe.turn] += count * rollCount
+                    positions[turn] = (positions[turn] + roll) % 10
+                    scores[turn] += positions[turn] + 1
+                    guard scores[turn] < 21 else {
+                        wins[turn] += count * rollCount
                         return
                     }
-                    let newUniverse = Universe(positions: positions, scores: scores, turn: (universe.turn + 1) % 2)
+                    let newUniverse = Universe(positions: positions, scores: scores)
                     result[newUniverse, default: 0] += count * rollCount
                 }
             }
+            turn = 1 - turn
         }
         return wins.max() ?? 0
     }
